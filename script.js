@@ -25,7 +25,7 @@ buttons.forEach((e) => {
         let lastBtn = e.dataset.key;
         highlightButtons(e);
         debugs();
-
+        console.log(lastBtn);
         if (operators.test(lastBtn)) {
             if (!num1) {
                 console.log("ELSE IF !NUM1");
@@ -35,8 +35,8 @@ buttons.forEach((e) => {
                 addDisplay.innerText = num1 + operator;
                 started = true;
             } else if (!num2) {
-                    console.log("ELSE IF !NUM2 !num1fake"); //!ok
-                    addDisplay.innerText = num1 + operator;
+                console.log("ELSE IF !NUM2 !num1fake"); //!ok
+                addDisplay.innerText = num1 + operator;
                 if (num2fake) {
                     console.log("if num2fake");
                     num2 = +num2fake;
@@ -58,7 +58,7 @@ buttons.forEach((e) => {
                 mainDisplay.innerText = result;
                 operator = lastBtn;
                 addDisplay.innerText = result + operator;
-                num2=null;
+                num2 = null;
                 num2fake = '';
                 console.log("EVERYTHING");
             }
@@ -79,19 +79,33 @@ buttons.forEach((e) => {
                 num1 = result;
                 num2fake += lastBtn;
                 mainDisplay.innerText = num2fake;
-
             }
             debugs();
 
-        } else if (lastBtn === "=" && num1 && operator && !finished) {
-            num2 = parseFloat(mainDisplay.innerText);
+        } else if (lastBtn === "=" && num1 && num2fake) {
+            finished = true;
+            num2 = +num2fake;
             console.log("=");
             addDisplay.innerText = num1 + operator + num2 + "=";
             operate(num1, num2, operator);
             mainDisplay.innerText = result;
             num2 = null;
-        } else {
-            console.log(lastBtn + " ELSE");
+        } else if (lastBtn === "neg") {
+            if (+mainDisplay.innerText === +num1fake) {
+                console.log("neg1");
+                num1fake = num1fake * -1;
+                mainDisplay.textContent = num1fake.toString();
+            } else if (+mainDisplay.innerText === +num2fake) {
+                console.log("neg2");
+                num2fake = num2fake * -1;
+                mainDisplay.textContent = num2fake;
+            } else {
+                console.log("other neg");
+            } 
+            debugs();
+        } else if (lastBtn === "clear") {
+            
+            mainDisplay.innerText = '0';
         }
     });
 });
@@ -100,20 +114,20 @@ buttons.forEach((e) => {
 function operate(a, b, operation) {
     switch (operation) {
         case "-":
-            return result = parseFloat(a - b).toFixed(3);
+            return result = +(a - b).toFixed(3).toString();
             break;
         case "+":
-            return result = parseFloat(a + b).toFixed(3);
+            return result = +(a + b).toFixed(3).toString();
             break;
         case "*":
-            return result = parseFloat(a * b).toFixed(3);
+            return result = +(a * b).toFixed(3).toString();
             break;
         case "/":
             if (b === 0) {
                 mainDisplay.innerText = "BROKEN";
                 throw new Error("Invalid");
             }
-            return result = parseFloat(a / b).toFixed(3);
+            return result = +(a / b).toFixed(3).toString();
             break;
         default:
             break;
