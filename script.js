@@ -103,7 +103,6 @@ function calc(event) {
         } else if (+mainDisplay.innerText === +num2fake) {
             num2fake = +num2fake * -1;
             mainDisplay.textContent = num2fake;
-        } else {
         }
 
     } else if (lastBtn === "clear" || lastBtn === "Delete") {
