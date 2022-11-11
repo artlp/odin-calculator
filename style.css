@@ -1,10 +1,90 @@
+@font-face {
+    font-family: 'Digital-7 Mono';
+    src: local('Digital-7 MonoItalic'), local('Digital-7MonoItalic'),
+        url('./fonts/Digital-7MonoItalic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Digital-7 Mono';
+    src: local('Digital-7 Mono'), local('Digital-7Mono'),
+        url('./fonts/Digital-7Mono.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sono';
+    src: url('./fonts/Sono-ExtraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sono';
+    src: url('./fonts/Sono-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sono';
+    src: url('./fonts/Sono-ExtraBold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sono';
+    src: url('./fonts/Sono-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sono';
+    src: url('./fonts/Sono-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sono';
+    src: url('./fonts/Sono-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sono';
+    src: url('./fonts/Sono-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+html {
+    background-image:
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.45)),
+    url('./bg.jpg');
+    height: 100%;
+
+}
 * {
     box-sizing: border-box;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: Sono, 'Courier New', Courier, monospace;
 }
 .display {
     align-items: flex-end;
-    background-color: lime;
+    background-color: #cbe86b;
     display:flex;
     flex-direction: column;
     height: 90px;
@@ -15,28 +95,30 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 40px;
+    overflow: hidden;
+    box-shadow: inset 0 0 4px 2px rgba(0, 0, 0, 0.621);
 }
 .main {
     font-size: 3rem;
+    font-family: 'Digital-7 Mono';
+
 }
 .additional {
-    font-size: 1rem;
-}
-.selected {
-    background: rgba(222, 222, 222, 0.559);
+    font-family: 'Digital-7 Mono';
+    font-size: 1.3rem;
 }
 .body {
-    /* background-color: red; */
-    background: linear-gradient(to bottom, rgb(108, 108, 108) 0%, rgb(163, 162, 162) 100%);
-    border: 4px solid black;
-    height: 700px;
-    margin: 0 auto;
+    border-radius: 8px;
+    border: 3px solid rgb(36, 36, 36);
+    border-style: ridge;
+    margin: 30px auto;
     width: 500px;
-    padding: 40px 10px;
     position: relative;
     width: 90%;
-    max-width: 800px;
+    max-width: 600px;
     min-width: 300px;
+    background-color:rgb(45, 45, 45);
+    box-shadow: 0 0 7px 4px rgba(0, 0, 0, 0.434);
 }
 
 .buttons > div {
@@ -47,18 +129,26 @@
     color: white;
     display:flex;
     font-size: 2rem;
-    font-weight: bold;
+    font-weight: normal;
     justify-content: center;
-    margin: 2px;
+    margin: 3px;
     /* width: 60px; */
     min-height: 60px;
+    background: linear-gradient(to bottom, rgb(31, 31, 31) 0%, rgb(62, 62, 62) 100%);
 }
 
 .buttons {
     display:grid;
+    /* background:  */
+    background-image: repeating-linear-gradient(-45deg, rgba(255,255,255, 0.05), rgba(255,255,255, 0.05) 1px, transparent 1px, transparent 6px),
+    linear-gradient(to bottom, rgb(23, 22, 22) 0%, rgb(88, 87, 87) 100%);
+    background-size: 4px 4px;
     grid-template-columns: 1fr 1fr 1fr 1.5fr;
     position: relative;
     top: 20%;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 10px 20px;
 }
 
 .buttons > div:hover {
@@ -66,17 +156,61 @@
     user-select: none;
 
 }
+.copyright {
+    position: relative;
+    bottom: 30px;
+    font-weight: 300;
+    background-color: #f8ca00;
+    display: inline-block;
+    padding: 2px 6px;
+    border: 2px groove #f8ca00;
+}
 
-.buttons > div:active {
+.copyright > span {
+    font-weight: 600;
+}
+
+a {
+    font-weight: 600;
+    text-decoration: none;
+    color: indianred;
+}
+.selected {
 box-shadow: inset 1px 1px 4px 0 black;
 transform: scale(0.95);
 }
 
 .main {
-    /* outline: 1px solid red; */
     width: 100%;
+    font-weight: 800;
 }
 .additional {
     /* outline: 1px solid blue; */
     width: 100%;
+}
+
+.top {
+    height: 200px;
+    padding: 40px 10px;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    background-image: repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05) 1px, transparent 1px, transparent 6px),
+    linear-gradient(to top, rgb(87, 87, 87) 0%, rgb(33, 33, 33) 100%);
+    background-size: 4px 4px;
+}
+
+.colororange {
+    background: linear-gradient(to bottom, #f87c00 0%, #f4ab58 100%) !important;
+}
+.colorgrey {
+    background: linear-gradient(to bottom, rgb(93, 93, 93) 0%, rgb(119, 119, 119) 100%) !important;
+}
+.colorblue {
+    background: linear-gradient(to bottom, #08ae21 0%, #78fd61 100%) !important;
+
+}
+
+.smalltext {
+    font-family: 'Digital-7 Mono';
+    font-size: 1.2rem;
 }
