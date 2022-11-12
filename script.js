@@ -18,9 +18,9 @@ let finished = false;
 let digits = new RegExp(/[0-9]/);
 mainDisplay.innerText = '0';
 
-/* function debugs() {
+function debugs() {
     debug.innerHTML = `started = ${started}, finished = ${finished}, num1 = ${num1}, num2 = ${num2}, num1fake = ${num1fake}, num2fake = ${num2fake}, operator = ${operator}, result = ${result}`;
-} */
+}
 
 buttons.forEach((e) => {
     e.addEventListener('mousedown', calc);
@@ -138,7 +138,14 @@ function calc(event) {
             mainDisplay.innerText = num2fake;
         }
     } else if (lastBtn === ".") {
-        if (!num1 && num1fake.toString().indexOf('.') === -1) {
+        if (!num1 && !num1fake) {
+            num1fake = "0.";
+            mainDisplay.innerText = num1fake;
+        } else if (num1 && !num2fake) {
+            num2fake = "0.";
+            mainDisplay.innerText = num2fake;
+        }
+        else if (!num1 && num1fake.toString().indexOf('.') === -1) {
             num1fake += lastBtn;
             mainDisplay.innerText = num1fake;
         }
